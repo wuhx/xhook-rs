@@ -21,6 +21,7 @@ pub unsafe extern "C" fn my_open(path: *const c_char, oflag: c_int, args: ...) -
 
 fn main() {
     xhook_register(".*\\.so$", "open", my_open as *const u8);
+    xhook_register(".*\\.so$", "malloc", my_malloc as *const u8);
 
     xhook_refresh(0);
 
